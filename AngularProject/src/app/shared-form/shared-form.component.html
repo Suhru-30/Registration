@@ -1,0 +1,14 @@
+ <form>
+<app-input
+[control]="formGroup.controls.firstname"
+inputId="firstname"
+label="Firstname"></app-input>
+<app-input
+[control]="formGroup.controls.lastname"
+inputId="lastname"
+label="Lastname"></app-input>
+<app-input
+[control]="formGroup.controls.['email']"
+inputId="email"
+label="email"></app-input>
+</form> 

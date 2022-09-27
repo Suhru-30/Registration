@@ -1,0 +1,56 @@
+<br><br><br>
+<div class="text-center">
+  <div class="container">
+    <div class="text-center">
+      <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+          <div class="container" style="width:auto">
+            <form [formGroup]="form" (ngSubmit)="Login()">
+              <div class="form-group">
+                Username :
+                <i class="fa fa-user"
+                  style="width:30px;height:33px;padding-top: 10px;background-color: rgb(4, 171, 166);text-align: center;">
+
+                </i>
+                <input formControlName="username"  /> &nbsp;
+
+                <div *ngIf="username?.dirty || username?.touched" class="text-danger">
+                  <div *ngIf="username?.invalid && username?.errors?.['required']">
+                    Username is required.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                &nbsp;&nbsp;          password: 
+                <i class="fa fa-key"
+                  style="width:30px;height:33px;padding-top: 10px;background-color: rgb(4, 171, 166);text-align: center;"></i>
+                <input formControlName="password" /> &nbsp;
+                <br /><br />
+                <div *ngIf="password?.dirty || password?.touched" class="text-danger">
+                  <div *ngIf="password?.invalid && password?.errors?.['required']">
+                    password is required.
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group">
+
+                <!-- <button type="submit" [disabled]="!contactForm.valid" class="btn btn-success">
+                  Login</button>  -->
+                        
+         <button type="submit" [disabled]="!form.valid" class="btn btn-info"style="background-color:rgb(4, 171, 166)"><b>
+          Login</b></button>  
+                <span><a class="text-info" routerLink="../Register" class="btn btn-link">Register</a></span>
+              </div>
+
+              <!-- <button type="reset" (click)="onReset()" class="btn btn-success">
+        Reset Form Values</button
+      ><br /><br /> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

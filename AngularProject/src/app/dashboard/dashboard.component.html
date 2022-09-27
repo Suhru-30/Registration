@@ -1,0 +1,82 @@
+<div>
+    <div class="text-center">
+    <app-header [UserName]="userDetails.name"></app-header>
+</div>
+    <div class="row">
+        <div class="text-center col-3 p-2" type="button" data-toggle="modal" data-target="#exampleModal"
+            style="padding: 10px;font-size: large;">
+            <button (click)="openModal()" class="btn btn-info"><b> Add user </b></button>
+        </div>
+        <div class="text-center col-2">
+            <div style="padding: 10px;font-size: large;">
+                <input class="form-check-input" type="checkbox" [(ngModel)]="showCompleted"
+                    (ngModelChange)="showcompletedList()" [value]="true"id="flexCheckDefault">
+                <label>
+                    Completed users
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div style="padding-left:30px;padding-right:30px">
+    <div class="row">
+        <div class="text-center col-md-2">
+            <div class="bg-info p-2"><b>User ID</b></div>
+        </div>
+        <div class="text-center col-md-2">
+            <div class=" bg-info p-2"><b>ID</b></div>
+        </div>
+        <div class="text-center col-md-2 ">
+            <div class="bg-info p-2"><b>Title</b></div>
+        </div>
+        <div class="text-center col-md-2">
+            <div class="bg-info p-2"><b>Completed</b></div>
+        </div>
+        <div class="text-center col-md-2">
+            <div class="bg-info p-2"><b>Delete user</b></div>
+        </div>
+    </div>
+    <div *ngFor="let item of todoList" class="row">
+        <div class="text-center col-md-2">
+            <div class="m-2  p-2" style="background-color: rgba(228, 243, 250, 0.962);">{{item.userId}}</div>
+        </div>
+        <div class="text-center col-md-2">
+            <div class="m-2  p-2 "style="background-color: rgba(228, 243, 250, 0.962);">{{item.id}}</div>
+        </div>
+        <div class="text-center col-md-2 ">
+            <div class="m-2  p-2" style="background-color: rgba(228, 243, 250, 0.962);">{{item.title}} </div>
+        </div>
+        <div class="text-center col-md-2">
+            <div class="m-2 p-2" style="background-color: rgba(228, 243, 250, 0.962);">{{item.completed?'Completed':'Not Completed'}}</div>
+        </div>
+        <div class="text-center col-md-2">
+            <div  class="m-2 p-2" style="background-color: rgba(228, 243, 250, 0.962);"(click)=" delete1Contact(item)"><a title="Delete"><i class="fa fa-trash" style="font-size: 20px;color:red;"></i></a></div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}"
+        style="background: rgba(188, 229, 246, 0.66);">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add user</h4>
+                    <button type="button" class="close" label="X"
+                        (click)="onCloseHandled()"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="addTodoListForm" (ngSubmit)="submitForm()">
+                        <div class="form-group m-3">
+                            Enter ID<input type="number" formControlName="id" class="form-control" />
+                        </div>
+                        <div class="form-group m-3">
+                            Enter Title<input type="text" formControlName="title" class="form-control" />
+                        </div>
+                        <button [disabled]="!addTodoListForm.valid" type="submit" class="btn btn-info">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
